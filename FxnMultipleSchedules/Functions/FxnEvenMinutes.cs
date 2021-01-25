@@ -18,8 +18,9 @@ namespace FxnMultipleSchedules.Functions
         [FunctionName("FxnEvenMinutes")]
         public async Task Run([TimerTrigger("0 0-58/2 * * * *")] TimerInfo myTimer, ILogger log)
         {
+            var nbr = await _nbrGenSvc.GenerateANumber();
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-            log.LogInformation($"The Even minutes function generated this number : {await _nbrGenSvc.GenerateANumber()}");
+            log.LogInformation($"The Even minutes function generated this number : {nbr}");
         }
 
     }
